@@ -1,3 +1,5 @@
+// Code for external testing
+
 const exampleHistory = {
     "type": "application/vnd.lime.collection+json",
     "resource": {
@@ -186,6 +188,33 @@ const messageTime = item => timeoOfInteraction = new Date(item.date).toLocaleStr
 
 
 handleHistory(history)
+
+// Code adapted for the blip
+/*
+function run(responseHistory) {
+    responseHistory = JSON.parse(responseHistory)
+    return handleHistory(responseHistory.resource.items);
+}
+
+function handleHistory(history) {
+    try {
+        let auxHistory = '';
+        history.forEach((item, index) => {
+            if (index != 0) {
+                auxHistory += `[${messageTime(item)}][${verifyOrigin(item)}] - ${verifyContent(item)}\n`
+            }
+        })
+        return auxHistory;
+    } catch (error) {
+        return `Error on process history - ${error}`
+    }
+
+};
+
+const verifyOrigin = item => (item.direction === 'received') ? 'Cliente' : 'Atendente';
+const verifyContent = item => (item.type === 'text/plain') ? item.content : `Tipo: ${item.content.type} | Link ${item.content.uri}`
+const messageTime = item => timeoOfInteraction = new Date(item.date).toLocaleString('pt-BR');
+*/
 
 
 
